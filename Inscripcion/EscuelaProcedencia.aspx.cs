@@ -17,6 +17,7 @@ namespace Inscripcion
     {
         #region
         UControl con = new UControl();
+        AlumComDAOSQL dao = new AlumComDAOSQL();
         CMunicipiosDAO muni = new CMunicipiosDAO();
         CeEstadosDAO est = new CeEstadosDAO();
         ceEscuelas esc = new ceEscuelas();
@@ -54,7 +55,7 @@ namespace Inscripcion
                     }
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
@@ -107,7 +108,8 @@ namespace Inscripcion
 
                     if (btnGuardar.Text=="GUARDAR")
                     {
-                        enc.Insert(3, id);
+                        dao.InsertEsc(llenarAlumCom(),alu_ID);
+                        enc.Insert(3, alu_ID);
                         Response.Redirect("InformacionFamiliar.aspx");
                     }
 

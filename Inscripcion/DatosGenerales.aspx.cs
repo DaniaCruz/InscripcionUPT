@@ -95,8 +95,9 @@ namespace Inscripcion
                 {
                     if (btnGuardar.Text == "GUARDAR")
                     {
-                        enc.Insert(alu_ID, 2);
+                        
                         dao.Insert(ObtenerDatos(), alu_ID);
+                        enc.Insert(alu_ID, 2);
                         Response.Redirect("EscuelaProcedencia.aspx");
                     }
                     else if (btnGuardar.Text == "ACTUALIZAR")
