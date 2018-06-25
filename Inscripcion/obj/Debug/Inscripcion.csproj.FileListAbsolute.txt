@@ -90,3 +90,4 @@ C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\bin\es\Microso
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.dll
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.pdb
+C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.csprojResolveAssemblyReference.cache
