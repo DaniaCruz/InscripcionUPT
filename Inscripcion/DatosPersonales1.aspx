@@ -94,7 +94,7 @@
                         <div class="col-md-6" align="left">
                             <asp:DropDownList runat="server" class="form-control" Width="100%" ID="alc_EdoCivil" AutoPostBack="True">
                                 <asp:ListItem Value="0">SELECCIONA</asp:ListItem>
-                                <asp:ListItem Value="1">SOLETERO(A)</asp:ListItem>
+                                <asp:ListItem Value="1">SOLTERO(A)</asp:ListItem>
                                 <asp:ListItem Value="2">CASADO(A)</asp:ListItem>
                                 <asp:ListItem Value="3">DIVORCIADO(A)</asp:ListItem>
                                 <asp:ListItem Value="4">VIUDO(A)</asp:ListItem>

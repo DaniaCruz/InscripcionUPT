@@ -59,8 +59,7 @@ namespace Inscripcion
             }
             catch (Exception)
             {
-
-                throw;
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
            
 
@@ -69,12 +68,20 @@ namespace Inscripcion
 
         public void EstablecerInicio()
         {
-            LlenarCombo(dis_ID, UControl.discapacidad);
-            LlenarCombo(lei_ID, UControl.l_Ind);
-            LlenarCombo(est_Natal_ID, UControl.estado);
-            LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
-            LlenarCombo(est_Proced_ID, UControl.estado);
-            LlenarCombo(mun_Proced_ID, con.Municipios(est_Natal_ID.SelectedValue));
+            try
+            {
+                LlenarCombo(dis_ID, UControl.discapacidad);
+                LlenarCombo(lei_ID, UControl.l_Ind);
+                LlenarCombo(est_Natal_ID, UControl.estado);
+                LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
+                LlenarCombo(est_Proced_ID, UControl.estado);
+                LlenarCombo(mun_Proced_ID, con.Municipios(est_Natal_ID.SelectedValue));
+            }
+            catch (Exception)
+            {
+
+            }
+            
 
         }
 
@@ -102,19 +109,12 @@ namespace Inscripcion
                         fa.LlamarUpdate(alu_ID);
                         Mensaje("TU INFORMACIÓN HA SIDO ACTUALIZADA ", "alert alert-success");
                     }
-
-
-
-
-}
-
-
-
+                }
+                
             }
             catch (Exception)
             {
-
-                throw;
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
 
 
@@ -125,80 +125,103 @@ namespace Inscripcion
         DataTable dt;
         public void RecuperarAlumno(int id)
         {
-           
+            try
+            {
                 AlumnoDAOSQL a = new AlumnoDAOSQL();
                 dt = a.GetTabla(id);
                 GetDataAlumno(dt);
+            }
+            catch (Exception)
+            {
+
+            }
+                
        }
         void BackUpTablas(int id)
         {
-            AlumnoDAOSQL a = new AlumnoDAOSQL();
-            dt = a.GetTabla(id);
-            GetDataAlumno(dt);
-            AlumComDAOSQL ac = new AlumComDAOSQL();
-            dt = ac.GetTabla(id);
-            GetDataAlumCom(dt);
+            try
+            {
+                AlumnoDAOSQL a = new AlumnoDAOSQL();
+                dt = a.GetTabla(id);
+                GetDataAlumno(dt);
+                AlumComDAOSQL ac = new AlumComDAOSQL();
+                dt = ac.GetTabla(id);
+                GetDataAlumCom(dt);
+            }
+            catch (Exception)
+            {
 
-
+            }
         }
         public void GetDataAlumno(DataTable tbl)
         {
-
-           
-            DataRow columna = tbl.Rows[0];
-
-         
-            alu_Esp.Text= columna["esp_Nombre"].ToString();
-            alu_NumControl.Text = columna["alu_NumControl"].ToString();
-            alu_Nombre.Text = columna["alu_Nombre"].ToString() +" " +columna["alu_ApellidoPaterno"].ToString() +" "+ columna["alu_ApellidoMaterno"].ToString();
-            alc_edad.Text = columna["alu_Edad"].ToString();
-            
-            if (columna["dis_ID"].ToString()!="1" && columna["dis_ID"].ToString() != "")
+            try
             {
-                rbSi.Selected = true;
-                dis_ID.Visible = true;
-                dis_ID.SelectedValue = dis_ID.Items.FindByValue(columna["dis_ID"].ToString()).Value;
+                DataRow columna = tbl.Rows[0];
+
+
+                alu_Esp.Text = columna["esp_Nombre"].ToString();
+                alu_NumControl.Text = columna["alu_NumControl"].ToString();
+                alu_Nombre.Text = columna["alu_Nombre"].ToString() + " " + columna["alu_ApellidoPaterno"].ToString() + " " + columna["alu_ApellidoMaterno"].ToString();
+                alc_edad.Text = columna["alu_Edad"].ToString();
+
+                if (columna["dis_ID"].ToString() != "1" && columna["dis_ID"].ToString() != "")
+                {
+                    rbSi.Selected = true;
+                    dis_ID.Visible = true;
+                    dis_ID.SelectedValue = dis_ID.Items.FindByValue(columna["dis_ID"].ToString()).Value;
+                }
+                else { rbNo.Selected = true; }
+
+
+                if (columna["lei_ID"].ToString() != "1" && columna["lei_ID"].ToString() != "")
+                {
+                    rSi.Selected = true;
+                    lei_ID.Visible = true;
+                    lei_ID.SelectedValue = lei_ID.Items.FindByValue(columna["lei_ID"].ToString()).Value;
+                }
+                else { rNo.Selected = true; }
             }
-            else { rbNo.Selected = true; }
+            catch (Exception)
+            {
 
-
-            if (columna["lei_ID"].ToString() != "1" && columna["lei_ID"].ToString() != "") {
-                rSi.Selected = true;
-                lei_ID.Visible = true;
-                lei_ID.SelectedValue = lei_ID.Items.FindByValue(columna["lei_ID"].ToString()).Value;
-            }
-            else {rNo.Selected = true;}
-
+            }           
         }
         public void GetDataAlumCom(DataTable tbl)
         {
-            DataRow columna = tbl.Rows[0];
-            alc_Curp.Text = columna["alc_Curp"].ToString();
-            alc_EdoCivil.SelectedValue = alc_EdoCivil.Items.FindByValue(columna["alc_EdoCivil"].ToString()).Value;
-            alc_FechaNac.ReadOnly = false;
-            DateTime dt = Convert.ToDateTime(columna["alc_FechaNac"].ToString());
-            alc_FechaNac.Text = dt.ToShortDateString();
+            try
+            {
+                DataRow columna = tbl.Rows[0];
+                alc_Curp.Text = columna["alc_Curp"].ToString();
+                alc_EdoCivil.SelectedValue = alc_EdoCivil.Items.FindByValue(columna["alc_EdoCivil"].ToString()).Value;
+                alc_FechaNac.ReadOnly = false;
+                DateTime dt = Convert.ToDateTime(columna["alc_FechaNac"].ToString());
+                alc_FechaNac.Text = dt.ToShortDateString();
 
-            est_Natal_ID.SelectedValue = est_Natal_ID.Items.FindByValue(columna["est_Natal_ID"].ToString()).Value;
-            LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
-            mun_Natal_ID.SelectedValue = mun_Natal_ID.Items.FindByValue(columna["mun_Natal_ID"].ToString()).Value;
+                est_Natal_ID.SelectedValue = est_Natal_ID.Items.FindByValue(columna["est_Natal_ID"].ToString()).Value;
+                LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
+                mun_Natal_ID.SelectedValue = mun_Natal_ID.Items.FindByValue(columna["mun_Natal_ID"].ToString()).Value;
 
-            est_Proced_ID.SelectedValue = est_Proced_ID.Items.FindByValue(columna["est_Proced_ID"].ToString()).Value;
-            LlenarCombo(mun_Proced_ID, con.Municipios(est_Proced_ID.SelectedValue));
-            mun_Proced_ID.SelectedValue = mun_Proced_ID.Items.FindByValue(columna["mun_Proced_ID"].ToString()).Value;
+                est_Proced_ID.SelectedValue = est_Proced_ID.Items.FindByValue(columna["est_Proced_ID"].ToString()).Value;
+                LlenarCombo(mun_Proced_ID, con.Municipios(est_Proced_ID.SelectedValue));
+                mun_Proced_ID.SelectedValue = mun_Proced_ID.Items.FindByValue(columna["mun_Proced_ID"].ToString()).Value;
 
-            alc_Localidad.Text = columna["alc_Localidad"].ToString();
-            alc_CodPostal.Text = columna["alc_CodPostal"].ToString();
-            alc_Colonia.Text = columna["alc_Colonia"].ToString();
-            alc_Calle.Text = columna["alc_Colonia"].ToString();
-            alc_NumExt.Text = columna["alc_NumExt"].ToString();
-            alc_NumInt.Text = columna["alc_NumInt"].ToString();
-            alc_Tel.Text = columna["alc_Tel"].ToString();
-            alc_Celular.Text = columna["alc_Celular"].ToString();
-            alc_correo.Text = columna["alc_Correo"].ToString();
-            alc_facebook.Text = columna["alc_facebook"].ToString();
-            alc_LugarNaci.Text= columna["alc_LugarNaci"].ToString();
+                alc_Localidad.Text = columna["alc_Localidad"].ToString();
+                alc_CodPostal.Text = columna["alc_CodPostal"].ToString();
+                alc_Colonia.Text = columna["alc_Colonia"].ToString();
+                alc_Calle.Text = columna["alc_Colonia"].ToString();
+                alc_NumExt.Text = columna["alc_NumExt"].ToString();
+                alc_NumInt.Text = columna["alc_NumInt"].ToString();
+                alc_Tel.Text = columna["alc_Tel"].ToString();
+                alc_Celular.Text = columna["alc_Celular"].ToString();
+                alc_correo.Text = columna["alc_Correo"].ToString();
+                alc_facebook.Text = columna["alc_facebook"].ToString();
+                alc_LugarNaci.Text = columna["alc_LugarNaci"].ToString();
+            }
+            catch (Exception)
+            {
 
+            }
         }
 
 
@@ -213,12 +236,20 @@ namespace Inscripcion
         AlumnoDTO llenarAlumno()
         {
             AlumnoDTO a = new AlumnoDTO();
-            a.alu_NumControl = Session["alu_NumControl"].ToString();
-            
-            string edad = alc_edad.Text;
-            a.alu_Edad = int.Parse(alc_edad.Text);
-            if (rSi.Selected == true) { a.lei_ID = Convert.ToInt32(lei_ID.SelectedValue); } else { a.lei_ID = 1; }
-            if (rbSi.Selected == true) { a.dis_ID = Convert.ToInt32(lei_ID.SelectedValue); } else { a.dis_ID = 1; }
+            try
+            {
+                a.alu_NumControl = Session["alu_NumControl"].ToString();
+
+                string edad = alc_edad.Text;
+                a.alu_Edad = int.Parse(alc_edad.Text);
+                if (rSi.Selected == true) { a.lei_ID = Convert.ToInt32(lei_ID.SelectedValue); } else { a.lei_ID = 1; }
+                if (rbSi.Selected == true) { a.dis_ID = Convert.ToInt32(lei_ID.SelectedValue); } else { a.dis_ID = 1; }
+                
+            }
+            catch (Exception)
+            {
+
+            }
             return a;
         }
 
@@ -241,26 +272,35 @@ namespace Inscripcion
         AlumComDTO llenarAlumCom()
         {
             AlumComDTO alc_Curp = new AlumComDTO();
-            alc_Curp.alc_Curp = this.alc_Curp.Text;
-            alc_Curp.alc_Correo = alc_correo.Text;
-            alc_Curp.alc_Calle = alc_Calle.Text;
-            alc_Curp.alc_Colonia = alc_Colonia.Text;
-            alc_Curp.alc_Localidad = alc_Localidad.Text;
-            alc_Curp.alc_NumInt = alc_NumInt.Text;
-            alc_Curp.alc_NumExt = alc_NumExt.Text;
-            alc_Curp.alc_CodPostal = alc_CodPostal.Text;
-            alc_Curp.mun_Proced_ID = int.Parse(mun_Proced_ID.SelectedValue);
-            alc_Curp.est_Proced_ID = int.Parse(est_Proced_ID.SelectedValue);
-            alc_Curp.alc_FechaNac = Convert.ToDateTime(alc_FechaNac.Text);
-            string fecha=alc_Curp.alc_FechaNac.ToString("dd/MM/yy");
-            alc_Curp.mun_Natatl_ID = int.Parse(mun_Natal_ID.SelectedValue);
-            alc_Curp.est_Natatl_ID = int.Parse(est_Natal_ID.SelectedValue);
-            alc_Curp.alc_EdoCivil = char.Parse(alc_EdoCivil.SelectedValue);
-            alc_Curp.alc_LugarNaci = alc_LugarNaci.Text;
-            alc_Curp.alc_Tel = alc_Tel.Text;
-            alc_Curp.alc_Celular = alc_Celular.Text;
-            alc_Curp.alc_Fcaebook = alc_facebook.Text;
+            try
+            {
+                
+                alc_Curp.alc_Curp = this.alc_Curp.Text;
+                alc_Curp.alc_Correo = alc_correo.Text;
+                alc_Curp.alc_Calle = alc_Calle.Text;
+                alc_Curp.alc_Colonia = alc_Colonia.Text;
+                alc_Curp.alc_Localidad = alc_Localidad.Text;
+                alc_Curp.alc_NumInt = alc_NumInt.Text;
+                alc_Curp.alc_NumExt = alc_NumExt.Text;
+                alc_Curp.alc_CodPostal = alc_CodPostal.Text;
+                alc_Curp.mun_Proced_ID = int.Parse(mun_Proced_ID.SelectedValue);
+                alc_Curp.est_Proced_ID = int.Parse(est_Proced_ID.SelectedValue);
+                alc_Curp.alc_FechaNac = Convert.ToDateTime(alc_FechaNac.Text);
+                string fecha = alc_Curp.alc_FechaNac.ToString("dd/MM/yy");
+                alc_Curp.mun_Natatl_ID = int.Parse(mun_Natal_ID.SelectedValue);
+                alc_Curp.est_Natatl_ID = int.Parse(est_Natal_ID.SelectedValue);
+                alc_Curp.alc_EdoCivil = char.Parse(alc_EdoCivil.SelectedValue);
+                alc_Curp.alc_LugarNaci = alc_LugarNaci.Text;
+                alc_Curp.alc_Tel = alc_Tel.Text;
+                alc_Curp.alc_Celular = alc_Celular.Text;
+                alc_Curp.alc_Fcaebook = alc_facebook.Text;
 
+                
+            }
+            catch (Exception)
+            {
+
+            }
             return alc_Curp;
         }
 
@@ -272,43 +312,63 @@ namespace Inscripcion
 
         public void LlenarCombo(DropDownList cb, DataSet ds)
         {
+            try
+            {
+                cb.DataSource = ds;
+                cb.DataTextField = ds.Tables[0].Columns[1].ToString();
+                cb.DataValueField = ds.Tables[0].Columns[0].ToString();
+                cb.DataMember = ds.Tables[0].TableName;
+                cb.DataBind();
+            }
+            catch (Exception)
+            {
 
-            cb.DataSource = ds;
-            cb.DataTextField = ds.Tables[0].Columns[1].ToString();
-            cb.DataValueField = ds.Tables[0].Columns[0].ToString();
-            cb.DataMember = ds.Tables[0].TableName;
-            cb.DataBind();
+            }
         }
 
         protected void rb_dis_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rbSi.Selected == true)
-                        {
-                            dis_ID.Visible = true;
-                Label4.Visible = true;
-                dis_ID.Visible = true;
-                RequiredFieldValidator8.Visible = true;
-                        }
-                        else
-                        {
-                            dis_ID.Visible = false;
-                Label4.Visible = false;
-                dis_ID.Visible = false;
-                RequiredFieldValidator8.Visible = false;
+            try
+            {
+                if (rbSi.Selected == true)
+                {
+                    dis_ID.Visible = true;
+                    Label4.Visible = true;
+                    dis_ID.Visible = true;
+                    RequiredFieldValidator8.Visible = true;
+                }
+                else
+                {
+                    dis_ID.Visible = false;
+                    Label4.Visible = false;
+                    dis_ID.Visible = false;
+                    RequiredFieldValidator8.Visible = false;
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
         protected void rb_lei_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rSi.Selected == true)
+            try
             {
-                lei_ID.Visible = true;
-                Label6.Visible = true;
+                if (rSi.Selected == true)
+                {
+                    lei_ID.Visible = true;
+                    Label6.Visible = true;
+                }
+                else
+                {
+                    lei_ID.Visible = false;
+                    Label6.Visible = false;
+                }
             }
-            else
+            catch (Exception)
             {
-                lei_ID.Visible = false;
-                Label6.Visible = false;
+
             }
         }
 
@@ -316,15 +376,26 @@ namespace Inscripcion
 
         protected void est_Natal_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
+            try
+            {
+                LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         protected void est_Proced_ID_SelectedIndexChanged(object sender, EventArgs e)
         {
+            try
+            {
+                LlenarCombo(mun_Proced_ID, con.Municipios(est_Proced_ID.SelectedValue));
+            }
+            catch (Exception)
+            {
 
-            LlenarCombo(mun_Proced_ID, con.Municipios(est_Proced_ID.SelectedValue));
-            
+            }            
         }
 
         protected void btn_NM_Actual_Click(object sender, EventArgs e)
@@ -353,23 +424,27 @@ namespace Inscripcion
 
         protected void btnNE_Nac_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
                 est.Insert(txtEst_Nac.Text.ToUpper());
                 est.Update(txtEst_Nac.Text.ToUpper());
 
-                 LlenarCombo(est_Natal_ID, con.Estados2());
-                
+                LlenarCombo(est_Natal_ID, con.Estados2());
+
                 DataSet estN = est.Consult(txtEst_Nac.Text.ToUpper());
                 string es = estN.Tables[0].Rows[0]["est_ID"].ToString();
 
 
-           
-            est_Natal_ID.SelectedValue = est_Natal_ID.Items.FindByValue(estN.Tables[0].Rows[0]["est_ID"].ToString()).Value;
-            LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
+
+                est_Natal_ID.SelectedValue = est_Natal_ID.Items.FindByValue(estN.Tables[0].Rows[0]["est_ID"].ToString()).Value;
+                LlenarCombo(mun_Natal_ID, con.Municipios(est_Natal_ID.SelectedValue));
 
                 txtEst_Nac.Text = "";
-            
-    
+            }
+            catch (Exception)
+            {
+
+            }   
         }
 
         protected void btnNM_Nac_Click(object sender, EventArgs e)
@@ -389,7 +464,6 @@ namespace Inscripcion
             }
             catch (Exception ex)
             {
-
 
             }
         }
@@ -413,16 +487,22 @@ namespace Inscripcion
             catch (Exception ex)
             {
 
-
             }
         }
 
 
         public void Mensaje(string Mensaje, string css)
         {
-            Label28.Visible = true;
-            Label28.CssClass = css;
-            Label28.Text = Mensaje;
+            try
+            {
+                Label28.Visible = true;
+                Label28.CssClass = css;
+                Label28.Text = Mensaje;
+            }
+            catch (Exception)
+            {
+
+            }
         }
     }
 } 
