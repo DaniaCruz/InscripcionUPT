@@ -90,6 +90,7 @@ C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\bin\es\Microso
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.dll
 C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.pdb
+<<<<<<< HEAD
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\bin\ApplicationInsights.config
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\bin\roslyn\csc.exe
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -183,3 +184,6 @@ C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\bin\es\Micros
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\obj\Debug\Inscripcion.csprojResolveAssemblyReference.cache
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\obj\Debug\Inscripcion.dll
 C:\Users\jhgtg\Desktop\InscripcionFinal\InscripcionUPT\Inscripcion\obj\Debug\Inscripcion.pdb
+=======
+C:\Users\Dania Cruz\Downloads\Inscripcion\Inscripcion\Inscripcion\obj\Debug\Inscripcion.csprojResolveAssemblyReference.cache
+>>>>>>> fcb88bd7cb82426c2a522854e646861959a6d098

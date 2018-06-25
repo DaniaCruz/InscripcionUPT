@@ -87,7 +87,7 @@ namespace Inscripcion
             catch (Exception ex)
             {
 
-                throw;
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
 
 
@@ -113,18 +113,26 @@ namespace Inscripcion
 
         protected void num_Personas_TextChanged(object sender, EventArgs e)
         {
-          
-            lbTabla.Visible = true;
-            Tabla.Visible = true;
-            TableRow[] filas = { Fila0, Fila1, Fila2, Fila3, Fila4, Fila5, Fila6, Fila6, Fila7, Fila8 };
+            try
+            {
+                lbTabla.Visible = true;
+                Tabla.Visible = true;
+                TableRow[] filas = { Fila0, Fila1, Fila2, Fila3, Fila4, Fila5, Fila6, Fila6, Fila7, Fila8 };
 
-            for (int i = 0; i < filas.Length; i++)
-                filas[i].Visible = false;
+                for (int i = 0; i < filas.Length; i++)
+                    filas[i].Visible = false;
 
-            int hijos = int.Parse(num_Personas.Text)<=8? int.Parse(num_Personas.Text):8 ;
-            for (int i = 0; i < hijos; i++)
-                filas[i].Visible = true;
+                int hijos = int.Parse(num_Personas.Text) <= 8 ? int.Parse(num_Personas.Text) : 8;
+                for (int i = 0; i < hijos; i++)
+                    filas[i].Visible = true;
 
+            }
+            catch (Exception)
+            {
+
+                
+            }
+        
 
 
         }
@@ -137,31 +145,32 @@ namespace Inscripcion
             FacadeAspirante fa = new FacadeAspirante(this);
             if (btnGuardar.Text == "GUARDAR")
             {
-   
-               
                 for (int i = 0; i < int.Parse(num_Personas.Text); i++)
                 {
                     fa.InsertDatosFamiliares(llenarDatosFamiliares(i), alu_ID);
                 }
                 fa.DeleteDatosFamiliaresR(alu_ID);
                 enc.Insert(4, alu_ID);
+                Response.Redirect("EstudioSocioE.aspx");
             }
             else
             {
 
                 fa.DeleteDatosFamiliares(alu_ID);
-                for (int i = 0; i < int.Parse(num_Personas.Text); i++)//cambia el 3 por el SelectedItem.text del comobox que tengas
-                {
-                    fa.InsertDatosFamiliares(llenarDatosFamiliares(i), alu_ID);
+                for (int i = 0; i < int.Parse(num_Personas.Text); i++)
+                    {
+                        fa.InsertDatosFamiliares(llenarDatosFamiliares(i), alu_ID);
+                       
+                    }
+               Mensaje("TU INFORMACIÓN HA SIDO ACTUALIZADA ", "alert alert-success");
+
                 }
-             
-            }
 
             }
             catch (Exception)
             {
 
-                throw;
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
 
         }    
@@ -387,5 +396,14 @@ namespace Inscripcion
         }
 
         #endregion
+
+        public void Mensaje(string Mensaje, string css)
+        {
+            lblMensaje.Visible = true;
+            lblMensaje.CssClass = css;
+            lblMensaje.Text = Mensaje;
+        }
+
+
     }
 }

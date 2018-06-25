@@ -10,10 +10,10 @@
         /* otras propiedades */
     }
    </style>
-
+    <br />
     <article id="tab4">
         <div class="row">
-            <div class="col-md-12 alert-danger" style="font-size: 15px; letter-spacing: 1px; left: 94px; top: 0px; width: 854px;" align="center">
+            <div class="col-md-12 alert-danger" style="font-size: 15px; letter-spacing: 1px; left: 36px; top: 0px; width: 905px;" align="center">
                 <span style="color: #921818">
                     <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <asp:Label ID="Label38" runat="server" ForeColor="#990000" Style="font-size: large; letter-spacing: 1px"
@@ -61,20 +61,19 @@
         <br />
         <div class="row">
             <div class="col-md-5" align="right">
-                <asp:Label ID="Label100" runat="server" Style="font-size: 15px; letter-spacing: 1px" Text="¿Cuál es el número de personas con las que vives?:"></asp:Label>
-                            <asp:Label ID="Label1" runat="server" Style="font-size: 12px" Text="NOTA: En caso de vivir solo, teclea 0." Visible="False"></asp:Label>
+                <asp:Label ID="Label100" runat="server" Style="font-size: 15px; letter-spacing: 1px" Text="¿Cuántos son los integrantes de tu familia?:"></asp:Label>
             </div>
             <div class="col-md-2" align="center">
-                <asp:TextBox MaxLength="4" ID="num_Personas" class="form-control" Width="100%" runat="server"  AutoPostBack="True" OnTextChanged="num_Personas_TextChanged"></asp:TextBox>
+                <asp:TextBox MaxLength="4" ID="num_Personas" class="form-control" Width="100%" runat="server"  AutoPostBack="True" onkeypress="return SoloNumeros(event);" OnTextChanged="num_Personas_TextChanged"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="RequiredFieldValidator38" ControlToValidate="num_Personas" ErrorMessage="Sólo se permiten números." Display="Dynamic" onkeypress="return SoloNumeros(event)"
                     ValidationExpression="\d{4}" ForeColor="#993333" Font-Bold="true" Style="font-size: 13px" runat="server" ValidationGroup="AD" />
             </div>
         </div>
 
         <center>
-                                <br />
+                                <br /><br />
                                 <div class="row col-md-12 form-group">
-                                    <asp:Label CssClass="text-justify" Font-Size="15px" runat="server" Text="Llene la siguiente tabla con los datos de los familiares con los qué vives, tomando en cuenta que sea sólo tu familia natural (papá, mamá y hermanos(as).)" ID="lbTabla"></asp:Label>
+                                    <asp:Label CssClass="text-justify" Font-Size="15px" runat="server" Text="Llena la siguiente tabla con los datos de tu familia natural (papá, mamá y hermanos(as).)" ID="lbTabla" Visible="False"></asp:Label>
                                 </div>
                                 <div class="row col-md-12 form-group">
                                     <div class="col-md-5">
@@ -526,18 +525,8 @@
                                                     </asp:TableCell><asp:TableCell BorderStyle="None" >
                                                     </asp:TableCell><asp:TableCell>
                                                      <asp:Button ID="btnGuardar" OnClick="btnGuardar_Click" runat="server" aling="center" Width="223px" Text="Siguiente" class="btn btn-danger btn-lg" BackColor="#9C1315" autopostback="true" BorderColor="#9C1315" ForeColor="#FFFFCC" Style="margin-bottom: 0" BorderStyle="None" ValidationGroup="AD"  />
-                                                        </asp:TableCell>
-                                                </asp:TableRow>
-                                            </asp:Table></div></div></div>
-
-
-        </center>
-        <center>
-        <asp:Label ID="Label28" runat="server" Text="GUARDADO" CssClass="alert alert-success" Width="757px" Visible="False" style="margin-left: 1px; text-align:center" Font-Bold="False" Font-Size="Large"></asp:Label>
-   </center> </article>
-    
-    
-    <div class="row col-md-12"></div>
+                                                        </asp:TableCell></asp:TableRow></asp:Table></div></div></div></center><center>
+        <asp:Label ID="lblMensaje" runat="server" Text="GUARDADO" CssClass="alert alert-success" Width="757px" Visible="False" style="margin-left: 1px; text-align:center" Font-Bold="False" Font-Size="Large"></asp:Label></center></article><div class="row col-md-12"></div>
     <div class="row col-md-12"></div>
     <div class="row col-md-12"></div>
     <div class="row col-md-12"></div>
