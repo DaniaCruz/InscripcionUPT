@@ -96,6 +96,31 @@ namespace Conect.DAO
             }
         }
 
+
+        public void InsertEsc(AlumComDTO obj, int id)
+        {
+            conexion = new UConexion();
+            using (conexion.Conexion())
+            {
+                int x = 0;
+                comando = new SqlCommand();
+
+                instruccion = "INSERT INTO AlumCom (alc_PromBachi,alc_AnioTerminoBachi,mun_Escue_ID,est_Escue_ID,esc_ID,alc_EspBachill, alu_ID) VALUES ";
+                instruccion += "(@alc_PromBachi,@alc_AnioTerminoBachi,@mun_Escue_ID,@est_Escue_ID,@esc_ID,@alc_EspBachill, @alu_ID) ";
+
+                comando = new SqlCommand(instruccion, conexion.Conexion());
+
+
+                comando.Parameters.Add("@alc_PromBachi", SqlDbType.VarChar).Value = obj.alc_PromBachi;
+                comando.Parameters.Add("@alc_EspBachill", SqlDbType.VarChar).Value = obj.alc_EspBachill;
+                comando.Parameters.Add("@mun_Escue_ID", SqlDbType.Int).Value = obj.mun_Escue_ID;
+                comando.Parameters.Add("@est_Escue_ID", SqlDbType.Int).Value = obj.est_Escue_ID;
+                comando.Parameters.Add("@esc_ID", SqlDbType.Int).Value = obj.esc_ID;
+                comando.Parameters.Add("@alc_AnioTerminoBachi", SqlDbType.VarChar).Value = obj.alc_AnioTerminoBachi;
+                comando.Parameters.Add("@alu_ID", SqlDbType.Int).Value = id;
+                x = comando.ExecuteNonQuery();
+            }
+        }
         public void UpdateEsc(AlumComDTO obj, int id)
         {
             conexion = new UConexion();
