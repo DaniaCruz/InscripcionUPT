@@ -1,0 +1,41 @@
+﻿    input[type="radio"],
+        input[type="checkbox"] {
+            display: none;
+        }
+
+        label:before {
+            font-family: 'FontAwesome';
+            width: 1.25em;
+            display: inline-block;
+        }
+
+        input[type="radio"] + label:before {
+            content: "\f10c"; /* circle-blank */
+        }
+
+        input[type="radio"]:checked + label:before {
+            content: "\f111"; /* circle */
+        }
+
+        input[type="checkbox"] + label:before {
+            content: "\f096"; /* check-empty */
+        }
+
+        input[type="checkbox"]:checked + label:before {
+            content: "\f046"; /* check */
+        }
+        .auto-style5 {
+            width: 800px;
+            max-width: 90%;
+            margin: 30px auto 21px auto;
+        }
+       .auto-style7 {
+           position: relative;
+           min-height: 1px;
+           float: left;
+           width: 50%;
+           left: 0px;
+           top: 0px;
+           padding-left: 15px;
+           padding-right: 15px;
+       }
