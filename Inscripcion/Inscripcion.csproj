@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>.\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -213,6 +216,7 @@
     <Content Include="DatosGenerales.aspx" />
     <Content Include="DatosPersonales.aspx" />
     <Content Include="DatosPersonales1.aspx" />
+    <Content Include="Documento.aspx" />
     <Content Include="EscuelaProcedencia.aspx" />
     <Content Include="EstudioSocioE.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -229,6 +233,12 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="img\encabezado.png" />
+    <Content Include="img\encabezado1.png" />
+    <Content Include="img\inicio.png" />
+    <Content Include="img\inicioleft.png" />
+    <Content Include="img\logoSE.png" />
+    <Content Include="ImprimirDocumentos.aspx" />
     <Content Include="InformacionFamiliar.aspx" />
     <Content Include="Menu.master" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -402,6 +412,7 @@
     <Compile Include="DAO\CeEstadosDAO.cs" />
     <Compile Include="DAO\CMunicipiosDAO.cs" />
     <Compile Include="DAO\DatosFamiliaresDAOSQL.cs" />
+    <Compile Include="DAO\Documentos.cs" />
     <Compile Include="DAO\EncuestasDAO.cs" />
     <Compile Include="DAO\IAdaoFicha.cs" />
     <Compile Include="DAO\IngrEgrFamiliaresDAOSQL.cs" />
@@ -435,6 +446,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Documento.aspx.cs">
+      <DependentUpon>Documento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Documento.aspx.designer.cs">
+      <DependentUpon>Documento.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DTO\AlumComDTO.cs" />
     <Compile Include="DTO\AlumnoDTO.cs" />
     <Compile Include="DTO\AntecedentesAluPDTO.cs" />
@@ -463,6 +481,13 @@
     <Compile Include="Facade\FacadeAspiranteSE.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="ImprimirDocumentos.aspx.cs">
+      <DependentUpon>ImprimirDocumentos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImprimirDocumentos.aspx.designer.cs">
+      <DependentUpon>ImprimirDocumentos.aspx</DependentUpon>
     </Compile>
     <Compile Include="InformacionFamiliar.aspx.cs">
       <DependentUpon>InformacionFamiliar.aspx</DependentUpon>

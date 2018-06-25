@@ -296,71 +296,71 @@ namespace Inscripcion
             }
         }
 
-        protected void aluu_Uni_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (aluu_UniSi.Selected == true)
-            {
-                aaa.Visible = true;
-                aaa.Attributes.Add("style", "background-color: #F2DEDE");
-                Label27.Visible = true;
-                Label26.Visible = true;
-                Label7.Visible = true;
-                Label8.Visible = true;
-                Label11.Visible = true;
-                Label14.Visible = true;
-                Label17.Visible = true;
-                Label18.Visible = true;
-                Label19.Visible = true;
-                alu_UniEstado.Visible = true;
-                alu_UniMun.Visible = true;
-                alu_Universidad.Visible = true;
-                alu_CarreraU.Visible = true;
-                alu_UniAnno.Visible = true;
-                alu_UniProm.Visible = true;
-                Button2.Visible = true;
-                Button5.Visible = true;
-                Button7.Visible = true;
-                RequiredFieldValidator4.Visible = true;
-                RequiredFieldValidator7.Visible = true;
-                RequiredFieldValidator9.Visible = true;
-                RequiredFieldValidator13.Visible = true;
-                RequiredFieldValidator14.Visible = true;
-                RequiredFieldValidator16.Visible = true;
-                CustomValidator1.Visible = true;
-                RegularExpressionValidator7.Visible = true;
-            }
-            else if (aluu_UniNo.Selected == true)
-            {
-                aaa.Visible = false;
-                aaa.Attributes.Add("style", "background-color: #ffffff");
-                Label27.Visible = false;
-                Label26.Visible = false;
-                Label7.Visible = false;
-                Label8.Visible = false;
-                Label11.Visible = false;
-                Label14.Visible = false;
-                Label17.Visible = false;
-                Label18.Visible = false;
-                Label19.Visible = false;
-                alu_UniEstado.Visible = false;
-                alu_UniMun.Visible = false;
-                alu_Universidad.Visible = false;
-                alu_CarreraU.Visible = false;
-                alu_UniAnno.Visible = false;
-                alu_UniProm.Visible = false;
-                Button2.Visible = false;
-                Button5.Visible = false;
-                Button7.Visible = false;
-                RequiredFieldValidator4.Visible = false;
-                RequiredFieldValidator7.Visible = false;
-                RequiredFieldValidator9.Visible = false;
-                RequiredFieldValidator13.Visible = false;
-                RequiredFieldValidator14.Visible = false;
-                RequiredFieldValidator16.Visible = false;
-                CustomValidator1.Visible = false;
-                RegularExpressionValidator7.Visible = false;
-            }
-        }
+        //protected void aluu_Uni_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (aluu_UniSi.Selected == true)
+        //    {
+        //        aaa.Visible = true;
+        //        aaa.Attributes.Add("style", "background-color: #F2DEDE");
+        //        Label27.Visible = true;
+        //        Label26.Visible = true;
+        //        Label7.Visible = true;
+        //        Label8.Visible = true;
+        //        Label11.Visible = true;
+        //        Label14.Visible = true;
+        //        Label17.Visible = true;
+        //        Label18.Visible = true;
+        //        Label19.Visible = true;
+        //        alu_UniEstado.Visible = true;
+        //        alu_UniMun.Visible = true;
+        //        alu_Universidad.Visible = true;
+        //        alu_CarreraU.Visible = true;
+        //        alu_UniAnno.Visible = true;
+        //        alu_UniProm.Visible = true;
+        //        Button2.Visible = true;
+        //        Button5.Visible = true;
+        //        Button7.Visible = true;
+        //        RequiredFieldValidator4.Visible = true;
+        //        RequiredFieldValidator7.Visible = true;
+        //        RequiredFieldValidator9.Visible = true;
+        //        RequiredFieldValidator13.Visible = true;
+        //        RequiredFieldValidator14.Visible = true;
+        //        RequiredFieldValidator16.Visible = true;
+        //        CustomValidator1.Visible = true;
+        //        RegularExpressionValidator7.Visible = true;
+        //    }
+        //    else if (aluu_UniNo.Selected == true)
+        //    {
+        //        aaa.Visible = false;
+        //        aaa.Attributes.Add("style", "background-color: #ffffff");
+        //        Label27.Visible = false;
+        //        Label26.Visible = false;
+        //        Label7.Visible = false;
+        //        Label8.Visible = false;
+        //        Label11.Visible = false;
+        //        Label14.Visible = false;
+        //        Label17.Visible = false;
+        //        Label18.Visible = false;
+        //        Label19.Visible = false;
+        //        alu_UniEstado.Visible = false;
+        //        alu_UniMun.Visible = false;
+        //        alu_Universidad.Visible = false;
+        //        alu_CarreraU.Visible = false;
+        //        alu_UniAnno.Visible = false;
+        //        alu_UniProm.Visible = false;
+        //        Button2.Visible = false;
+        //        Button5.Visible = false;
+        //        Button7.Visible = false;
+        //        RequiredFieldValidator4.Visible = false;
+        //        RequiredFieldValidator7.Visible = false;
+        //        RequiredFieldValidator9.Visible = false;
+        //        RequiredFieldValidator13.Visible = false;
+        //        RequiredFieldValidator14.Visible = false;
+        //        RequiredFieldValidator16.Visible = false;
+        //        CustomValidator1.Visible = false;
+        //        RegularExpressionValidator7.Visible = false;
+        //    }
+        //}
 
         public void Mensaje(string Mensaje, string css)
         {
@@ -368,5 +368,7 @@ namespace Inscripcion
             Label28.CssClass = css;
             Label28.Text = Mensaje;
         }
+
+      
     }
 }

@@ -76,5 +76,10 @@ namespace Inscripcion
             }
         }
 
+        protected void btnSesion_Click(object sender, EventArgs e)
+        {
+            Session["alu_ID"] = null;
+            Response.Redirect("Default.aspx");
+        }
     }
 }

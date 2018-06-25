@@ -294,7 +294,7 @@
                         </div>
                     
 <%--ESTUDIAS ALGU POSGRADO O MAESTRIA--%>
-                    <div class="row">
+                  <%--  <div class="row">
                                 <div class="col-md-6" align="justify">
                                     <asp:Label ID="Label40" runat="server" Style="font-size: 15px; letter-spacing: 1px" Text="¿Te inscribirás a alguna maestría o doctorado?"></asp:Label>
                                 </div>
@@ -595,7 +595,7 @@
                                 OnServerValidate="val_Promedio_ServerValidate" SetFocusOnError="True" ForeColor="#993333" Font-Bold="true" Style="font-size: 13px" Display="Dynamic" Visible="False"></asp:CustomValidator>
                         </div>
                         </div>    
-                    </div>
+                    </div>--%>
 
 
 

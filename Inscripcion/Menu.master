@@ -27,9 +27,14 @@
                 <li class="nav-item">
                     <a class="nav-link active" runat="server" id="ES" href="../EstudioSocioE.aspx">Estudio Socioeconómico</a>
                 </li>
+
+          <li class="nav-item">
+                    <a class="nav-link active" runat="server" id="A1" href="../ImprimirDocumentos.aspx">Impresión</a>
+                </li>
+
              <li class="nav-item">
                     &nbsp;&nbsp;&nbsp;
-                    <asp:Button ID="btnSesion" class="btn btn-default" runat="server" Text="Salir"  style="font-size: large; color: #800000"   Height="38px" Width="82px"/>
+                    <asp:Button ID="btnSesion" class="btn btn-default" runat="server" Text="Salir"  style="font-size: large; color: #800000"   Height="38px" Width="82px" OnClick="btnSesion_Click"/>
                
                     <br />
                
