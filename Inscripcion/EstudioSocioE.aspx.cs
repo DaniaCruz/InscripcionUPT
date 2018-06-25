@@ -62,7 +62,10 @@ namespace Inscripcion
 
                 }
             }
-            catch (Exception) { }
+            catch (Exception)
+            {
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
+            }
         }
 
 
@@ -534,6 +537,7 @@ namespace Inscripcion
                     ingr.Update(ObtenerFamiliares(), alu_ID);
                     viv.Update(ObtenerVivienda(), alu_ID);
                     beca.Update(ObtenerBecas(), alu_ID);
+                    Mensaje("TU INFORMACIÓN HA SIDO ACTUALIZADA ", "alert alert-success");
 
                 }
 
@@ -545,7 +549,7 @@ namespace Inscripcion
             catch (Exception)
             {
 
-
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
         }
 

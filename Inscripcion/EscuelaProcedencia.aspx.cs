@@ -31,26 +31,32 @@ namespace Inscripcion
             AlumnoDAOSQL alu = new AlumnoDAOSQL();
             ((Menu)Master).camabiarcolor(3);
 
-
-            if (!IsPostBack)
+            try
             {
-                if (Session["alu_ID"] != null)
+                if (!IsPostBack)
                 {
-                    alu_ID= (int)Session["alu_ID"];
-
-                    EstablecerInicio();
-                    if (enc.EncuestaContestada(alu_ID, 3))//si existe el alumno
+                    if (Session["alu_ID"] != null)
                     {
-                        btnGuardar.Text = "ACTUALIZAR";
-                        BackUpTablas(alu_ID);
+                        alu_ID = (int)Session["alu_ID"];
+
+                        EstablecerInicio();
+                        if (enc.EncuestaContestada(alu_ID, 3))//si existe el alumno
+                        {
+                            btnGuardar.Text = "ACTUALIZAR";
+                            BackUpTablas(alu_ID);
+
+                        }
+                        else
+                        {
+                            btnGuardar.Text = "GUARDAR";
+                        }
 
                     }
-                    else
-                    {
-                        btnGuardar.Text = "GUARDAR";
-                    }
-
                 }
+            }
+            catch (Exception)
+            {
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
         }
 
@@ -96,11 +102,12 @@ namespace Inscripcion
                     int id = (int)Session["alu_ID"];
                     
                         fa.UpdateEscuela(id);
-                        enc.Insert(3, id);
-                      
-                    
+                        Mensaje("TU INFORMACIÓN HA SIDO ACTUALIZADA ", "alert alert-success");
+
+
                     if (btnGuardar.Text=="GUARDAR")
                     {
+                        enc.Insert(3, id);
                         Response.Redirect("InformacionFamiliar.aspx");
                     }
 
@@ -110,8 +117,7 @@ namespace Inscripcion
                 }
                 catch (Exception ex)
                 {
-
-                    throw;
+                    Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
                 }
                
                }
@@ -278,7 +284,7 @@ namespace Inscripcion
                 LlenarCombo(esc_ID, con.Escuela(int.Parse(mun_Escu_ID.SelectedValue)));
 
                 DataSet InstN = esc.Consult(txtInstN.Text.ToUpper());
-                esc_ID.SelectedValue = esc_ID.Items.FindByValue(InstN.Tables[0].Rows[0]["mun_ID"].ToString()).Value;
+                esc_ID.SelectedValue = esc_ID.Items.FindByValue(InstN.Tables[0].Rows[0]["esc_ID"].ToString()).Value;
 
 
                 txtMuniN.Text = "";

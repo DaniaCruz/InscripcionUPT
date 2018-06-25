@@ -32,25 +32,33 @@ namespace Inscripcion
             MaintainScrollPositionOnPostBack = true;
             ((Menu)Master).camabiarcolor(2);
 
-            if (Session["alu_ID"] != null)
+
+            try
             {
-                if (!IsPostBack)
-            {
-                   
-                    alu_ID = (int)Session["alu_ID"];
-                    EstablecerInicio();
-                    if (enc.EncuestaContestada(alu_ID, 2))
+                if (Session["alu_ID"] != null)
+                {
+                    if (!IsPostBack)
                     {
-                        btnGuardar.Text = "ACTUALIZAR";
-                        GetDataAlumno(dao.GetTabla(alu_ID));
-                    }
-                    else
-                    {
-                        btnGuardar.Text = "GUARDAR";
-                    }
+
+                        alu_ID = (int)Session["alu_ID"];
+                        EstablecerInicio();
+                        if (enc.EncuestaContestada(alu_ID, 2))
+                        {
+                            btnGuardar.Text = "ACTUALIZAR";
+                            GetDataAlumno(dao.GetTabla(alu_ID));
+                        }
+                        else
+                        {
+                            btnGuardar.Text = "GUARDAR";
+                        }
 
 
+                    }
                 }
+            }
+            catch (Exception ex)
+            {
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
           
            
@@ -81,14 +89,27 @@ namespace Inscripcion
 
         protected void btnAB_Click(object sender, EventArgs e)
         {
-
-
-            if (IsValid)
+            try
             {
-                dao.UpdateGenerales(ObtenerDatos(), alu_ID);
-                enc.Insert(2,alu_ID);
-                Response.Redirect("EscuelaProcedencia.aspx");
+                if (IsValid)
+                {
+                    if (btnGuardar.Text == "GUARDAR")
+                    {
+                        enc.Insert(alu_ID, 2);
+                        dao.Insert(ObtenerDatos(), alu_ID);
+                        Response.Redirect("EscuelaProcedencia.aspx");
+                    }
+                    else if (btnGuardar.Text == "ACTUALIZAR")
+                    {
+                        dao.UpdateGenerales(ObtenerDatos(), alu_ID);
+                        Mensaje("TU INFORMACIÓN HA SIDO ACTUALIZADA ", "alert alert-success");
+                    }
 
+                }
+            }
+            catch (Exception)
+            {
+                Mensaje("NO SE HA PODIDO REALIZAR LA OPERACIÓN , INTENTELO MÁS TARDE", "alert alert-danger");
             }
         }
 
@@ -155,6 +176,7 @@ namespace Inscripcion
             }
             catch (Exception ex)
             {
+                
             }
         }
 

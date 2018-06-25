@@ -220,7 +220,7 @@
 
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
 
-                                            <asp:Button ID="Btn_GuardarIN" Width="91px" runat="server" Text="Agregar" BackColor="#800020"  data-target="#exampleModalCenter"
+                                            <asp:Button ID="Btn_GuardarIN" Width="91px" runat="server" Text="Agregar" BackColor="#800020"
                                                 BorderColor="#800020" ForeColor="#FFFFCC" Style="margin-bottom: 0" Height="31px" BorderStyle="None" CssClass="btn btn-primary" ValidationGroup="NI" OnClick="Btn_GuardarIN_Click" />
 
 

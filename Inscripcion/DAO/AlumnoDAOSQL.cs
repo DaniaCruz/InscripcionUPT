@@ -9,27 +9,27 @@ using System.Web;
 
 namespace Conect.DAO
 {
-    public class AlumnoDAOSQL :IAdaoFicha<AlumnoDTO>
+    public class AlumnoDAOSQL : IAdaoFicha<AlumnoDTO>
     {
         public SqlCommand comando { set; get; }
         public UConexion conexion { set; get; }
         public string instruccion { set; get; }
-        
+
         public int Insert(AlumnoDTO obj)
         {
             conexion = new UConexion();
             using (conexion.Conexion())
             {
                 int id = 0;
-                
+
                 instruccion = "INSERT INTO Alumno(lei_Id,dis_ID,alu_Edad)";
                 instruccion += "OUTPUT INSERTED.alu_ID VALUES(@lei_Id,@dis_ID,@alu_Edad);";
                 comando = new SqlCommand(instruccion, conexion.Conexion());
 
-                comando.Parameters.Add("@lei_Id",SqlDbType.Int).Value=obj.lei_ID;
+                comando.Parameters.Add("@lei_Id", SqlDbType.Int).Value = obj.lei_ID;
                 comando.Parameters.Add("@dis_ID", SqlDbType.Int).Value = obj.dis_ID;
-                comando.Parameters.Add("@alu_Edad", SqlDbType.Int).Value = obj.alu_Edad;    
-                id= int.Parse(comando.ExecuteScalar().ToString());
+                comando.Parameters.Add("@alu_Edad", SqlDbType.Int).Value = obj.alu_Edad;
+                id = int.Parse(comando.ExecuteScalar().ToString());
                 conexion.Conexion().Close();
                 return id;
             }
@@ -39,20 +39,20 @@ namespace Conect.DAO
             conexion = new UConexion();
             using (conexion.Conexion())
             {
-          
+
                 instruccion = "UPDATE Alumno SET lei_Id=@lei_Id,dis_ID=@dis_ID,alu_Edad=@alu_Edad ";
-                instruccion+= " WHERE alu_ID=@alu_ID";
+                instruccion += " WHERE alu_ID=@alu_ID";
 
                 comando = new SqlCommand(instruccion, conexion.Conexion());
                 comando.Parameters.Add("@lei_Id", SqlDbType.Int).Value = obj.lei_ID;
                 comando.Parameters.Add("@dis_ID", SqlDbType.Int).Value = obj.dis_ID;
                 comando.Parameters.Add("@alu_Edad", SqlDbType.Int).Value = obj.alu_Edad;
                 comando.Parameters.Add("@alu_ID", SqlDbType.Int).Value = id;
-               comando.ExecuteNonQuery();
+                comando.ExecuteNonQuery();
                 conexion.Conexion().Close();
             }
         }
-     
+
 
         public bool SelectExiste(int id)
         {
@@ -118,7 +118,7 @@ namespace Conect.DAO
                 using (con)
                 {
                     string query = "SELECT * FROM Alumno INNER JOIN Especialidades ON Alumno.esp_ID=Especialidades.esp_ID ";
-                           query+="WHERE alu_ID = @alu_ID";
+                    query += "WHERE alu_ID = @alu_ID";
 
                     comando = new SqlCommand(query, con);
                     comando.Parameters.Add("@alu_ID", SqlDbType.Int).Value = id;

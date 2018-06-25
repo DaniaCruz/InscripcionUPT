@@ -69,4 +69,8 @@ public class FacadeAspirante
     }
 
     #endregion
+    public void UpdateAlumno(int id)
+    {
+        new AlumnoDAOSQL().Update(a.AlumnoDTO, id);
+    }
 }
